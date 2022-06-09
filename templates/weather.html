@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>{{ weather.name }}</title>
+    </head>
+    <body>
+        <h1>Hello {{ weather.temperature }}</h1>
+        <figure class="image is-50x50">
+            <img src="http://api.openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+        </figure>
+        <div>
+            {{ weather.description }}
+        </div>
+    </body>
+</html>
