@@ -24,12 +24,15 @@
             {% for weather in weather_data %}
             <div class="box">
                 <h2>Hello {{ weather.city }}</h1>
-                <h3>Temperatura de {{ weather.temperature }} </h2>
+                <h3>Temperatura de {{ weather.temperature }}° </h2>
                 <figure class="image is-50x50">
                     <img src="http://api.openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
                 </figure>
                 <div>
                     {{ weather.description }}
+                </div>
+                <div>
+                    <b>Dica do dia: </b>{{ weather.dica }}
                 </div>
             </div>
             {% endfor %}

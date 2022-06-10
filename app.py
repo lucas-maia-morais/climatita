@@ -3,6 +3,8 @@ import requests
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
+import aux
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather.db'
@@ -37,8 +39,9 @@ def index():
 
             weather = {
                 'city': r['name'],
-                'temperature': r['main']['temp'],
+                'temperature': int(float(r['main']['temp'])),
                 'description': r['weather'][0]['description'],
+                'dica': aux.dica(r['main']['temp']),
                 'icon': r['weather'][0]['icon'],
             }
             weather_data.append(weather)
