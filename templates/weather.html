@@ -1,14 +1,38 @@
 <html>
     <head>
-        <title>{{ weather.name }}</title>
+        <title>What's the wheater Climatita?</title>
     </head>
     <body>
-        <h1>Hello {{ weather.temperature }}</h1>
-        <figure class="image is-50x50">
-            <img src="http://api.openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
-        </figure>
-        <div>
-            {{ weather.description }}
-        </div>
+        <section class="section" id="ask_weather">
+            <h1>Qual é o climatita dessa cidade?</h1>
+            <form method="POST">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input class="input" name="city" type="text" placeholder="City Name">
+                    </div>
+                    <div class="control">
+                        <button class="button is-info">
+                            Adicionar cidade
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="section" id="Weather">
+            <h1>Climatitas</h1>
+            {% for weather in weather_data %}
+            <div class="box">
+                <h2>Hello {{ weather.city }}</h1>
+                <h3>Temperatura de {{ weather.temperature }} </h2>
+                <figure class="image is-50x50">
+                    <img src="http://api.openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                </figure>
+                <div>
+                    {{ weather.description }}
+                </div>
+            </div>
+            {% endfor %}
+        </section>
     </body>
 </html>
