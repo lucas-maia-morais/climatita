@@ -19,6 +19,10 @@
             </form>
         </section>
 
+        <form action="/delete_all" method=post>
+            <input type=submit value="Delete All">
+        </form>
+
         <section class="section" id="Weather">
             <h1>Climatitas</h1>
             {% for weather in weather_data %}
@@ -34,6 +38,21 @@
                 <div>
                     <b>Dica do dia: </b>{{ weather.dica }}
                 </div>
+                <!-- <form method="POST">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" name="city" type="text" placeholder="City Name">
+                        </div>
+                        <div class="control">
+                            <button class="button is-info">
+                                Adicionar cidade
+                            </button>
+                        </div>
+                    </div>
+                </form> -->
+                <form action="{{ url_for('delete_city', city_name=weather.city) }}" method=post>
+                    <input type=submit value="Delete">
+                </form>
             </div>
             {% endfor %}
         </section>
