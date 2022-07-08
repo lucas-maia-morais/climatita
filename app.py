@@ -1,7 +1,10 @@
 from crypt import methods
 from email import message
+from hmac import trans_36
 from operator import methodcaller
 from urllib import response
+from googletrans import Translator
+from googletrans.gtoken import TokenAcquirer
 import requests
 from flask import Flask, render_template, request, jsonify, redirect, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +15,8 @@ import aux
 # Start app
 app = Flask(__name__)
 app.config['DEBUG'] = True
+translator = Translator()
+acquirer = TokenAcquirer()
 
 # Connect db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather.db'
@@ -58,9 +63,11 @@ def index():
             weather = {
                 'city': r['name'],
                 'temperature': int(float(r['main']['temp'])),
-                'description': r['weather'][0]['description'],
+                'description': translator.translate(r['weather'][0]['description'], src='en', dest='pt'),
                 'dica': aux.dica(r['main']['temp']),
                 'icon': r['weather'][0]['icon'],
+                'country': r['sys']['country'],
+                'dt': r['dt'],
             }
             weather_data.append(weather)
         except:
@@ -143,6 +150,8 @@ def all_cities_weather():
                     'description': r['weather'][0]['description'],
                     'dica': aux.dica(r['main']['temp']),
                     'icon': r['weather'][0]['icon'],
+                    'country': r['sys']['country'],
+                    'dt': r['dt'],
                 }
                 weather_data.append(weather)
             except:
