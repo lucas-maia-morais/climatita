@@ -62,7 +62,7 @@ def index():
                 'city': r['name'],
                 'temperature': int(float(r['main']['temp'])),
                 'description': translator.translate(r['weather'][0]['description'], src='en', dest='pt').text,
-                'dica': aux.dica(r['main']['temp']),
+                'dica': aux.dica(r['main']['temp'],r['main']['humidity'],r['wind']['speed']),
                 'icon': r['weather'][0]['icon'],
                 'country': r['sys']['country'],
                 'dt': r['dt'],
