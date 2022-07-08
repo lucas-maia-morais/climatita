@@ -4,7 +4,6 @@ from hmac import trans_36
 from operator import methodcaller
 from urllib import response
 from googletrans import Translator
-from googletrans.gtoken import TokenAcquirer
 import requests
 from flask import Flask, render_template, request, jsonify, redirect, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -16,7 +15,6 @@ import aux
 app = Flask(__name__)
 app.config['DEBUG'] = True
 translator = Translator()
-acquirer = TokenAcquirer()
 
 # Connect db
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather.db'
@@ -63,7 +61,7 @@ def index():
             weather = {
                 'city': r['name'],
                 'temperature': int(float(r['main']['temp'])),
-                'description': translator.translate(r['weather'][0]['description'], src='en', dest='pt'),
+                'description': translator.translate(r['weather'][0]['description'], src='en', dest='pt').text,
                 'dica': aux.dica(r['main']['temp']),
                 'icon': r['weather'][0]['icon'],
                 'country': r['sys']['country'],
@@ -140,22 +138,25 @@ def all_cities_weather():
         # print(cities)
 
         for city in cities:
-            try:
+            # try:
                 name = city.name
                 r = requests.get(url.format(name)).json()
+
+                description_en = r['weather'][0]['description']
+                description_pt = translator.translate(description_en, src='en', dest='pt').text
                 weather = {
                     'city_id': city.id,
                     'city': r['name'],
                     'temperature': int(float(r['main']['temp'])),
-                    'description': r['weather'][0]['description'],
+                    'description': description_pt,
                     'dica': aux.dica(r['main']['temp']),
                     'icon': r['weather'][0]['icon'],
                     'country': r['sys']['country'],
                     'dt': r['dt'],
                 }
                 weather_data.append(weather)
-            except:
-                pass
+            # except:
+            #     pass
         
         response_object['cities_weather'] = weather_data
 
