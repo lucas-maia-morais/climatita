@@ -10,6 +10,8 @@
 ## Visão geral
  - Aqui podemos ver o primeiro layout onde podemos escolher as cidades, por temperatura, descrição, dica da hora e ações.
 
+ ![Alt text](./imgs/geral.jpeg)
+
 ## Instalação:
 
 ### Servidor
@@ -44,9 +46,14 @@ npm run serve
  - Clicando em "Adicionar cidade" podemos ver no exemplo: "São José dos Campos, BR; 23°; scattered clouds (nuvens espalhadas); dica da hora: Aproveite o dia para caminhar, a temperatura está ótima; e Ações: Mostrar, Atualizar ou Deletar"
  - Ao clicar em "Adicionar cidade", como destacado na imagem anterior, o seguinte display aparece para o usuário: "Adicione uma nova cidade; Cidade; Submit / Reset".
 
+![Alt text](./imgs/adicionar.jpeg)
+
 ### Como fica após adicionar algumas cidades?
  - Como pode-se ver pela imagem, adicionando cidades de interesse, a temperatura, descrição meterológica e dicas de acordo com o clima local aparecerão para o usuário.
+
 
 ### Funcionalidades
  - Após adicionar as cidades ao banco de dados, é interessante sempre usar quando necessário os botões indicados na figura: atualizar ou deletar.
  - Além dos botões "atualizar" e "deletar", temos o "mostrar" que tem a função de detalhar numa seção separada as informações sobre a cidade selecionada como mostra a figura.
+
+![Alt text](./imgs/detalhes.jpeg)
