@@ -351,7 +351,7 @@ export default {
   },
   methods: {
     getWeatherData() {
-      const path = 'http://localhost:5000/cities_weather';
+      const path = '/cities_weather';
       axios.get(path)
         .then((res) => {
           this.weather_data = res.data.cities_weather;
@@ -363,7 +363,7 @@ export default {
         });
     },
     addCityWeather(payload) {
-      const path = 'http://localhost:5000/cities_weather';
+      const path = '/cities_weather';
       axios.post(path, payload)
         .then((res) => {
           this.getWeatherData();
@@ -408,7 +408,7 @@ export default {
       this.updateCityWeather(payload, this.editForm.city_id);
     },
     updateCityWeather(payload, cityID) {
-      const path = `http://localhost:5000/cities_weather/${cityID}`;
+      const path = `/cities_weather/${cityID}`;
       axios.put(path, payload)
         .then((res) => {
           this.getWeatherData();
@@ -428,7 +428,7 @@ export default {
       this.getWeatherData();
     },
     removeCityWeather(cityID) {
-      const path = `http://localhost:5000/cities_weather/${cityID}`;
+      const path = `/cities_weather/${cityID}`;
       axios.delete(path)
         .then((res) => {
           this.getWeatherData();
