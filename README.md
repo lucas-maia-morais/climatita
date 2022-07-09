@@ -1,5 +1,14 @@
-# climatita
-Sistema de projeção do tempo a partir  de localização
+# [Climatita](https://climatita-exame.herokuapp.com/)
+ - O [Climatita](https://climatita-exame.herokuapp.com/) faz uma projeção do tempo a partir da localização dada, dando dicas ao usuário a depender do clima local!.
+ - O sistema implementa o CRUD e filtros para melhorar a busca do usuário.
+ - Link para o [site]([Climatita](https://climatita-exame.herokuapp.com/))
+
+## Sumário
+ - Nos próximos seções poderemos ver o resultado final
+ - A seguir veremos os detalhes sobre as funcionalides do Climatita.
+
+## Visão geral
+ - Aqui podemos ver o primeiro layout onde podemos escolher as cidades, por temperatura, descrição, dica da hora e ações.
 
 ## Instalação:
 
@@ -28,3 +37,16 @@ Para rodar:
 ```
 npm run serve
 ```
+
+## Funcionalidades
+
+### Adicionando cidades
+ - Clicando em "Adicionar cidade" podemos ver no exemplo: "São José dos Campos, BR; 23°; scattered clouds (nuvens espalhadas); dica da hora: Aproveite o dia para caminhar, a temperatura está ótima; e Ações: Mostrar, Atualizar ou Deletar"
+ - Ao clicar em "Adicionar cidade", como destacado na imagem anterior, o seguinte display aparece para o usuário: "Adicione uma nova cidade; Cidade; Submit / Reset".
+
+### Como fica após adicionar algumas cidades?
+ - Como pode-se ver pela imagem, adicionando cidades de interesse, a temperatura, descrição meterológica e dicas de acordo com o clima local aparecerão para o usuário.
+
+### Funcionalidades
+ - Após adicionar as cidades ao banco de dados, é interessante sempre usar quando necessário os botões indicados na figura: atualizar ou deletar.
+ - Além dos botões "atualizar" e "deletar", temos o "mostrar" que tem a função de detalhar numa seção separada as informações sobre a cidade selecionada como mostra a figura.
